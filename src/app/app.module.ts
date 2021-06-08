@@ -12,8 +12,8 @@ import { SearchInputPipe } from "./pipes/search-input.pipe";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from "./services/auth.service";
-import { MenuComponent } from './components/menu/menu.component';
-import { UserCardComponent } from './components/user-card/user-card.component';
+import { MenuComponent } from "./components/menu/menu.component";
+import { UserCardComponent } from "./components/user-card/user-card.component";
 
 @NgModule({
   declarations: [
@@ -27,13 +27,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     MenuComponent,
     UserCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })

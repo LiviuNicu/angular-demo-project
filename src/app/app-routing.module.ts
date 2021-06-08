@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: "", redirectTo: "/public/login", pathMatch: "full" },
   {
     path: "public",
-    canActivate: [PublicGuard],
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
