@@ -27,7 +27,13 @@ import { UserCardComponent } from "./components/user-card/user-card.component";
     MenuComponent,
     UserCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })

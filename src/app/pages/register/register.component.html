@@ -1,0 +1,81 @@
+<h1>Register</h1>
+<hr />
+
+<form [formGroup]="myForm" (ngSubmit)="doRegister()">
+  <div class="from-group">
+    <label>First Name</label>
+    <input
+      class="form-control"
+      placeholder="First Name"
+      formControlName="firstName"
+      [ngClass]="myForm.controls.firstName.errors ? 'is-invalid' : ''"
+    />
+    <div *ngIf="submited && myForm.controls.firstName.errors">
+      <div
+        [style.color]="'red'"
+        *ngIf="myForm.controls.firstName.errors.required"
+      >
+        First name is required
+      </div>
+    </div>
+  </div>
+  <div class="from-group">
+    <label>Last Name</label>
+    <input
+      class="form-control"
+      placeholder="Last Name"
+      formControlName="lastName"
+    />
+  </div>
+  <div class="from-group">
+    <label>Email</label>
+    <input class="form-control" placeholder="Email" formControlName="email" />
+  </div>
+  <div formGroupName="passwords">
+    <div class="from-group">
+      <label>Password</label>
+      <input
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+        type="password"
+        [ngClass]="
+          submited && myForm.controls.passwords.errors ? 'is-invalid' : ''
+        "
+      />
+    </div>
+    <div class="from-group">
+      <label>Confirm password</label>
+      <input
+        class="form-control"
+        placeholder="Confirm password"
+        formControlName="confirm_password"
+        type="password"
+        [ngClass]="
+          submited && myForm.controls.passwords.errors ? 'is-invalid' : ''
+        "
+      />
+    </div>
+    <div
+      *ngIf="
+        submited && myForm.controls.passwords.controls.confirm_password.errors
+      "
+    >
+      <div
+        *ngIf="
+          submited &&
+          myForm.controls.passwords.controls.confirm_password.errors.minlength
+        "
+      >
+        Min length
+      </div>
+    </div>
+  </div>
+  <div *ngIf="submited && myForm.controls.passwords.errors">
+    <div *ngIf="submited && myForm.controls.passwords.errors.spanac">
+      Passwords do not match
+    </div>
+  </div>
+  <hr />
+  <button class="btn btn-primary" type="submit">Register</button>
+</form>
