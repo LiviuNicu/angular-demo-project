@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginDTO } from "src/app/interfaces/login-dto";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: "",
   };
   public errorMessage: any = false;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -21,8 +22,11 @@ export class LoginComponent implements OnInit {
     this.errorMessage = false;
     if (this.validateEmail(this.user.email)) {
       this.authService.login(this.user).subscribe(
-        (response) => {
-          console.log(response);
+        (response: any) => {
+          if (response.token) {
+            localStorage.setItem("token", response.token);
+            this.router.navigate(["/private/dashboard"]);
+          }
         },
         (err) => {
           console.log(err);

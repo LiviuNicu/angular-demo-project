@@ -1,1 +1,11 @@
-
+<div class="card" *ngIf="userData">
+  <img src="/assets/user.png" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ userData.firstName }} {{ userData.lastName }}</h5>
+    <p class="card-text">
+      {{ userData.email }}
+    </p>
+    <button class="btn btn-success" (click)="goToProfile()">Profile</button>
+    <button class="btn btn-primary" (click)="goToTasks()">Tasks</button>
+  </div>
+</div>

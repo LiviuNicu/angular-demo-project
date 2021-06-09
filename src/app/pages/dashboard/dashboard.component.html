@@ -1,0 +1,10 @@
+<div class="row">
+  <input [(ngModel)]="search" placeholder="Search" class="form-control" />
+  <div class="col-3" *ngFor="let user of users | searchInput: search">
+    <app-user-card
+      [userData]="user"
+      (profileEvent)="goProfile($event)"
+      (tasksEvent)="goTasks($event)"
+    ></app-user-card>
+  </div>
+</div>

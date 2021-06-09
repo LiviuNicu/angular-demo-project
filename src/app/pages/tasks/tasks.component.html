@@ -1,0 +1,32 @@
+<h1>User tasks</h1>
+
+<div class="row">
+  <div class="col-9">
+    <input [(ngModel)]="text" class="form-control" />
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success" (click)="addTask()">Add task</button>
+  </div>
+</div>
+<hr />
+<div class="form-group">
+  <label>Search</label>
+  <input
+    class="form-control"
+    [(ngModel)]="search"
+    (ngModelChange)="onFieldChanged()"
+  />
+</div>
+<hr />
+<table class="table">
+  <tr>
+    <td>Task</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let task of tasks">
+    <td>{{ task.text }}</td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteTask(task)">Delete</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,21 @@
+<h1>Profile</h1>
+
+<table class="table table-bordered table-hover" *ngIf="profile">
+  <tr>
+    <td>First Name</td>
+    <td>{{ profile.firstName | uppercase }}</td>
+  </tr>
+
+  <tr>
+    <td>Last Name</td>
+    <td>{{ profile.lastName | titlecase }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{ profile.email }}</td>
+  </tr>
+  <tr>
+    <td>Date added</td>
+    <td>{{ profile.dateAdded | date: "medium" }}</td>
+  </tr>
+</table>

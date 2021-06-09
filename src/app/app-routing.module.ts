@@ -13,8 +13,32 @@ const routes: Routes = [
   {
     path: "public",
     children: [
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
+      { path: "login", component: LoginComponent, canActivate: [PublicGuard] },
+      {
+        path: "register",
+        component: RegisterComponent,
+        canActivate: [PublicGuard],
+      },
+    ],
+  },
+  {
+    path: "private",
+    children: [
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        canActivate: [PrivateGuard],
+      },
+      {
+        path: "profile/:id",
+        component: ProfileComponent,
+        canActivate: [PrivateGuard],
+      },
+      {
+        path: "tasks/:id",
+        component: TasksComponent,
+        canActivate: [PrivateGuard],
+      },
     ],
   },
 ];

@@ -19,7 +19,12 @@
   />
 </div>
 <hr />
-<button class="btn btn-success" [disabled]="isNotValid()" (click)="doLogin()">
+<button
+  class="btn btn-success"
+  [disabled]="isNotValid()"
+  (click)="doLogin()"
+  id="loginB"
+>
   Login
 </button>
 <button class="btn btn-primary" [routerLink]="['/public/register']">

@@ -14,6 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from "./services/auth.service";
 import { MenuComponent } from "./components/menu/menu.component";
 import { UserCardComponent } from "./components/user-card/user-card.component";
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserCardComponent } from "./components/user-card/user-card.component";
     SearchInputPipe,
     MenuComponent,
     UserCardComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

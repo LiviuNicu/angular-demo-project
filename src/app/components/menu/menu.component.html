@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/private/dashboard']">To to list</a>
+    <a class="navbar-brand" [routerLink]="['/private/dashboard']"
+      >To to list {{ name }}</a
+    >
     <button
       class="navbar-toggler"
       type="button"
@@ -23,7 +25,13 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page">Logout</a>
+          <a
+            class="nav-link active"
+            [style.cursor]="cursorPointer"
+            aria-current="page"
+            (click)="logout()"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>

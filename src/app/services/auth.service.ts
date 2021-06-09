@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable, of } from "rxjs";
 import { environment } from "src/environments/environment";
 import { LoginDTO } from "../interfaces/login-dto";
@@ -13,7 +14,7 @@ export class AuthService {
   private httpOptionsPublic = {
     headers: new HttpHeaders({ "Content-type": "application/json" }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(user: LoginDTO) {
     return this.http.post(
@@ -29,6 +30,11 @@ export class AuthService {
       user,
       this.httpOptionsPublic
     );
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    this.router.navigate(["/public/login"]);
   }
 
   private handleError<T>(operation = "operation", result?: T) {

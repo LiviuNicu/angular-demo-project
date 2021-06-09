@@ -12,6 +12,16 @@ describe("RegisterComponent", () => {
   let de: DebugElement;
   let el: HTMLElement;
 
+  function updateForm(firstName, lastName, email, password, confirm_password) {
+    component.myForm.controls["firstName"].setValue(firstName);
+    component.myForm.controls["lastName"].setValue(lastName);
+    component.myForm.controls["email"].setValue(email);
+    component.myForm.get(["passwords", "password"]).setValue(password);
+    component.myForm
+      .get(["passwords", "confirm_password"])
+      .setValue(confirm_password);
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterComponent],
@@ -38,5 +48,19 @@ describe("RegisterComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("empty form should be invalid", () => {
+    updateForm("", "", "", "", "");
+    expect(component.myForm.valid).toBe(false);
+  });
+  it("form should be valid", () => {
+    updateForm("test", "test", "test@test.com", "12345", "12345");
+    expect(component.myForm.valid).toBe(true);
+  });
+  it("form is invlaid because email is invalid", () => {
+    updateForm("test", "test", "test", "12345", "12345");
+    expect(component.myForm.valid).toBe(false);
+    expect(component.myForm.controls["email"].getError("email")).toBeTruthy();
   });
 });

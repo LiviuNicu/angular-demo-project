@@ -11,11 +11,15 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class PublicGuard implements CanActivate {
-  constructor() {}
+  constructor(private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
+    if (localStorage.getItem("token")) {
+      this.router.navigate(["/private/dashboard"]);
+      return false;
+    }
     return true;
   }
 }

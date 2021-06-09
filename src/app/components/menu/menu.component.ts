@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-menu",
@@ -7,7 +8,13 @@ import { AuthService } from "src/app/services/auth.service";
   styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-  constructor() {}
+  cursorPointer = "pointer";
+  name = environment.name;
+  constructor(private authSerivce: AuthService) {}
 
   ngOnInit() {}
+
+  logout() {
+    this.authSerivce.logout();
+  }
 }
