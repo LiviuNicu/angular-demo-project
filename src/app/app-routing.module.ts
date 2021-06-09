@@ -41,6 +41,13 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: "test",
+    loadChildren: () =>
+      import("./../../projects/test/src/app/app.module").then(
+        (m) => m.TestAppModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -14,7 +14,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from "./services/auth.service";
 import { MenuComponent } from "./components/menu/menu.component";
 import { UserCardComponent } from "./components/user-card/user-card.component";
-import { TestComponent } from './components/test/test.component';
+import { TestComponent } from "./components/test/test.component";
+import { TestAppModule } from "projects/test/src/app/app.module";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TestComponent } from './components/test/test.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TestAppModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

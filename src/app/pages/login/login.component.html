@@ -5,8 +5,8 @@
   <input
     [(ngModel)]="user.email"
     class="form-control"
-    [class]="error ? 'form-control is-invalid' : 'form-control'"
-    [ngClass]="error ? 'is-invalid' : ''"
+    [class]="errorMessage ? 'form-control is-invalid' : 'form-control'"
+    [ngClass]="errorMessage ? 'is-invalid' : ''"
   />
 </div>
 <div class="form-group">
